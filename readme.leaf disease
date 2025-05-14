@@ -1,1 +1,100 @@
+This project uses image classification to detect leaf diseases from a plant image using a camera, processes the image using a Convolutional Neural Network (CNN), and displays the results along with remedies using a Tkinter GUI. 
+It is designed to run on a Raspberry Pi, with GPIO support to potentially trigger actions like alerts or irrigation.
 
+📷 Features :
+
+  - Real-time image capture from a camera
+  - Deep learning-based image classification (healthy or diseased)
+  - GUI interface for user interaction using Tkinter
+  - Provides specific remedies based on the identified disease
+  - Compatible with Raspberry Pi GPIO, can trigger relay actions
+
+💡 Diseases Detected :
+ 
+   ✅ Healthy
+   🦠 Bacterial Spot
+   🟠 Mosaic Virus
+   🍂 Spectoria
+   🌫 Leaf Mold
+   🔁 Curl Virus
+
+🛠 Requirements :
+
+   Hardware:
+    - Raspberry Pi (any model with GPIO & camera support)
+    - USB/Web camera or Pi camera module
+    - Relay Module (optional for GPIO action)
+                    
+   Software :
+    - Python Libraries
+
+ 🤖 Install dependencies :
+
+pip install opencv-python numpy tflearn tensorflow pillow matplotlib tqdm
+sudo apt-get install python3-tk
+Optional for GPIO:
+
+sudo pip install RPi.GPIO
+                    
+ 📁 Directory Structure:
+
+   .
+   ├── testpicture/               # Folder to store test image captured from camera
+   ├── healthyvsunhealthynew-*.model  # Pre-trained CNN model file
+   ├── leaf_disease_detector.py  # Main script
+   ├── verify_data.npy           # Saved verification data
+   └── README.md
+
+ ⚙️ How It Works
+
+    - GUI opens with "Get Photo" button.
+    - Upon clicking:
+   - Raspberry Pi camera captures a live image.
+   - Image is saved to testpicture/ directory.
+   - "Analyse Image" button loads the image into a CNN model trained to classify 6 categories.
+   - If a disease is detected:
+   - GUI shows disease name.
+   - Remedies are shown via a pop-up window.
+   - If leaf is Healthy, it displays a success message.
+
+  🧠 Deep Learning Model :
+
+    The CNN model (healthyvsunhealthynew-*.model) is trained using TFLearn on labeled images of diseased vs healthy leaves. Architecture includes:
+
+   - Multiple convolution and pooling layers
+   - ReLU activation
+   - Softmax output for multi-class prediction
+   - You can train your own model using a dataset of labeled leaf images.
+
+  🚀 Getting Started :
+
+   - Clone this repo to your Raspberry Pi.
+   - Make sure your camera is connected and accessible.
+   - Run the script:
+   - python3 leaf_disease_detector.py
+   - Follow GUI prompts:
+   - Click "Get Photo" to take a live image.
+   - Click "Analyse Image" to detect and display disease/remedies.
+
+  💬 Sample Output :
+
+    - Image captured and previewed in GUI.
+                    
+  🎬 Displays :
+                    
+    - Disease Name: Spectoria
+    - Click below for remedies...
+    - [Remedies Button]
+
+  🛡 Troubleshooting :
+
+    - Make sure the camera is enabled via raspi-config.
+    - Ensure all Python dependencies are installed.
+    - GPIO errors? Run with sudo.
+
+  🔮 Future Improvements :
+
+    - Add voice alert or SMS support.
+    - Add database logging of detections.
+    - Improve accuracy by retraining the model on a larger dataset.
+    - Add web dashboard or mobile interface.
