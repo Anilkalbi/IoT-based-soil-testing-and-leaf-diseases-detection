@@ -36,15 +36,6 @@ Optional for GPIO:
 
 sudo pip install RPi.GPIO
                     
- 📁 Directory Structure:
-
-   .
-   ├── testpicture/               # Folder to store test image captured from camera
-   ├── healthyvsunhealthynew-*.model  # Pre-trained CNN model file
-   ├── leaf_disease_detector.py  # Main script
-   ├── verify_data.npy           # Saved verification data
-   └── README.md
-
  ⚙️ How It Works
 
     - GUI opens with "Get Photo" button.
